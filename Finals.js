@@ -360,7 +360,6 @@ function startNewGame() {
 }
 
 function startNewRound() {
-  
   hand = [];
   handsPlayed = 0;
   score = 0;
@@ -371,28 +370,26 @@ function startNewRound() {
   cardsLeft = 52;
   deck = createDeck();
   shuffleDeck(deck);
-  if (roundNumber <= 4) 
-{
-  targetScore += 500;
-} 
-elseif(roundNumber >4 && <20) 
-{
-  let growth = 500 + 150 * (roundNumber* roundNumber);
-  targetScore += growth;
-}
-elseif(roundNumber >= 20)
-{
-  let growth2 = 1000 + 200 * (roundNumber * roundNumber * roundNumber)
-  targetScore += growth2;
-}
+
+  if (roundNumber <= 4) {
+    targetScore += 500;
+  } else if (roundNumber > 4 && roundNumber < 20) {
+    let growth = 500 + 150 * (roundNumber * roundNumber);
+    targetScore += growth;
+  } else if (roundNumber >= 20) {
+    let growth2 = 1000 + 200 * (roundNumber * roundNumber * roundNumber);
+    targetScore += growth2;
+  }
 
   roundNumber++;
   rerollsLeft = 10 + rollups;
+
   if (roundNumber > 26) {
     gamePhase = 'gameover';
     win = true;
   }
 }
+
 
 function createDeck() {
   let deck = [];
